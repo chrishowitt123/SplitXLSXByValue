@@ -15,7 +15,6 @@ namespace OutpaitentAnalysis
         static void Main(string[] args)
         {
 
-
            var dt = GetDataTableFromExcel(@"M:\MSG Open Episodes\Done\Current Episode_Final Appointment_Outcome Discharged\Copy of Current Episode_Final Appointment_Outcome Discharged_TEST1.xlsx");
 
 
@@ -34,12 +33,9 @@ namespace OutpaitentAnalysis
             }
 
 
-
             DataTable dt1 = dt.Clone();
 
             var groups = dt.AsEnumerable().GroupBy(r => new { Group = r["Group"] });
-
-
 
             foreach (var g in distinctGroups)
             {
@@ -51,12 +47,11 @@ namespace OutpaitentAnalysis
                         {
                             {
                                 dt1.ImportRow(dr);
-
-
                             }
                         }
                     }
                 }
+
                 var xlsxFile = $@"M:\MSG Open Episodes\Done\Current Episode_Final Appointment_Outcome Discharged\Group_{g}.xlsx";
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 FileInfo fileInfo = new FileInfo(xlsxFile);
@@ -68,10 +63,8 @@ namespace OutpaitentAnalysis
                     ws.Cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
                     ws.View.FreezePanes(2, 1);
                     package.Save();
-                    dt1.Clear();
                 }
             }
-
 
             Console.WriteLine("Finished!");
 
@@ -124,4 +117,8 @@ namespace OutpaitentAnalysis
         }
     }
 }
+
+
+
+
 
