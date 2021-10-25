@@ -15,14 +15,7 @@ namespace OutpaitentAnalysis
         static void Main(string[] args)
         {
 
-           var dt = GetDataTableFromExcel(@"M:\MSG Open Episodes\Done\Current Episode_Final Appointment_Outcome Discharged\Copy of Current Episode_Final Appointment_Outcome Discharged_TEST1.xlsx");
-
-
-            List<String> colsNames = new List<String>();
-            foreach (DataColumn column in dt.Columns)
-            {
-                colsNames.Add(column.ToString());
-            }
+            var dt = GetDataTableFromExcel(@"M:\MSG Open Episodes\Done\Current Episode_Final Appointment_Outcome Discharged\Copy of Current Episode_Final Appointment_Outcome Discharged_TEST1.xlsx");
 
             var distinctGroups = dt.AsEnumerable().Select(s =>  s.Field<string>("Group")).Distinct().ToList();
 
@@ -67,22 +60,6 @@ namespace OutpaitentAnalysis
             }
 
             Console.WriteLine("Finished!");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
