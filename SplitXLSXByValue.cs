@@ -17,9 +17,9 @@ namespace OutpaitentAnalysis
 
             var dt = GetDataTableFromExcel(@"M:\MSG Open Episodes\Done\Current Episode_Final Appointment_Outcome Discharged\Copy of Current Episode_Final Appointment_Outcome Discharged_TEST1.xlsx");
 
-            var distinctGroups = dt.AsEnumerable().Select(s =>  s.Field<string>("Group")).Distinct().ToList();
+            var distinctGroups = dt.AsEnumerable().Select(s => s.Field<string>("Group")).Distinct().ToList();
 
-            foreach(var g in distinctGroups)
+            foreach (var g in distinctGroups)
             {
 
                 Console.WriteLine(g);
@@ -56,6 +56,7 @@ namespace OutpaitentAnalysis
                     ws.Cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
                     ws.View.FreezePanes(2, 1);
                     package.Save();
+                    dt1.Clear();
                 }
             }
 
@@ -94,8 +95,4 @@ namespace OutpaitentAnalysis
         }
     }
 }
-
-
-
-
 
